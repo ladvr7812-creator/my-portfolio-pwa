@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vaishnavi Lad - B.Tech IT Student Portfolio showcasing projects and skills">
+    <meta name="theme-color" content="#667eea">
+    <title>My Portfolio - IT Student</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="./AppImages/ios/152.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./AppImages/ios/152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./AppImages/ios/180.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./AppImages/android/android-launchericon-192-192.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./AppImages/ios/32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./AppImages/android/android-launchericon-192-192.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <h1>MyPortfolio</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Hi, I'm Vaishnavi Lad</h2>
+        <p>B.Tech IT Student | Aspiring Developer | Tech Enthusiast</p>
+        <a href="#contact" class="btn">Get In Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://static.vecteezy.com/system/resources/previews/041/761/097/non_2x/personal-portfolio-illustration-with-profile-data-resume-or-self-improvement-to-attract-clients-and-employers-in-flat-cartoon-background-vector.jpg"
+                    alt="Profile">
+            </div>
+            <div class="about-text">
+                <p>Hello! I'm a second-year B.Tech student pursuing Information Technology. I'm passionate about web
+                    development, software engineering, and creating innovative solutions to real-world problems.</p>
+                <p>Currently, I'm learning modern web technologies and working on building progressive web applications.
+                    I enjoy exploring new technologies and constantly improving my skills.</p>
+                <p>My goal is to become a full-stack developer and contribute to meaningful projects that make a
+                    difference.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>💻 Frontend</h3>
+                <p>HTML, CSS, JavaScript</p>
+            </div>
+            <div class="skill-card">
+                <h3>🐍 Programming</h3>
+                <p>Python, Java</p>
+            </div>
+            <div class="skill-card">
+                <h3>🗄️ Database</h3>
+                <p>MySQL, MongoDB</p>
+            </div>
+            <div class="skill-card">
+                <h3>🔧 Tools</h3>
+                <p>Git, GitHub, VS Code</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <!-- Option 1: Use emoji (current) -->
+
+                    <!-- Option 2: Use image (uncomment below and add your image) -->
+                    <img src="https://st2.depositphotos.com/1032577/6582/i/450/depositphotos_65828845-stock-photo-portfolio-written-on-notebook.jpg"
+                        alt="Portfolio">
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio Website</h3>
+                    <p>A responsive portfolio website built with HTML, CSS, and JavaScript. Features smooth animations,
+                        modern design, and will be converted to a Progressive Web App.</p>
+                    <span class="project-status completed">✓ Completed</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+
+                    <img src="https://helloi.ai/wp-content/uploads/elementor/thumbs/ai-resume-builder-qpa8fir5niayzt9g03ab11oc3hj0t0ooz716qqyfs6.jpeg"
+                        alt="AI Resume Builder">
+                </div>
+                <div class="project-content">
+                    <h3>AI-Based Resume Builder</h3>
+                    <p>A collaborative group project that uses artificial intelligence to help users create professional
+                        resumes. Built with modern web technologies and AI integration. </p>
+                    <span class="project-status completed">✓ Completed</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+
+                    <img src="https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fz62yojpg2j65kbs2ielu.png"
+                        alt="Number Guessing Game">
+                </div>
+                <div class="project-content">
+                    <h3>Number Guessing Game</h3>
+                    <p>An interactive Python game with random number generation, input validation, and attempt tracking.
+                        Features clean code with comprehensive documentation and README.</p>
+                    <span class="project-status completed">✓ Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MyPortfolio. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="mailto:vaishnavi.it3831@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
