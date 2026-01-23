@@ -1,4 +1,5 @@
-const CACHE_NAME = 'vaishnavi-portfolio-v1';
+const CACHE_NAME = 'vaishnavi-portfolio-v2';
+
 const urlsToCache = [
   '/portfolio-website/',
   '/portfolio-website/index.html',
@@ -9,64 +10,69 @@ const urlsToCache = [
   '/portfolio-website/AppImages/android/android-launchericon-512-512.png'
 ];
 
-// Install Service Worker
+// INSTALL
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installing...');
+  console.log('[SW] Install');
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('[Service Worker] Caching files');
-        return cache.addAll(urlsToCache);
-      })
-      .catch((error) => {
-        console.error('[Service Worker] Caching failed:', error);
-      })
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.all(
+        urlsToCache.map((url) =>
+          fetch(url, { cache: 'reload' }).then((response) => {
+            if (!response.ok) {
+              throw new Error(`Failed to fetch ${url}`);
+            }
+            return cache.put(url, response);
+          })
+        )
+      );
+    })
   );
   self.skipWaiting();
 });
 
-// Activate Service Worker
+// ACTIVATE
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activating...');
+  console.log('[SW] Activate');
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('[Service Worker] Removing old cache:', cacheName);
-            return caches.delete(cacheName);
+    caches.keys().then((cacheNames) =>
+      Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
           }
         })
-      );
-    })
+      )
+    )
   );
-  return self.clients.claim();
+  self.clients.claim();
 });
 
-// Fetch Strategy
+// FETCH
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
-        }
+  if (event.request.method !== 'GET') return;
 
-        return fetch(event.request).then((networkResponse) => {
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(event.request)
+        .then((networkResponse) => {
           if (!networkResponse || networkResponse.status !== 200) {
             return networkResponse;
           }
 
-          const responseToCache = networkResponse.clone();
+          const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
+            cache.put(event.request, responseClone);
           });
 
           return networkResponse;
+        })
+        .catch(() => {
+          return caches.match('/portfolio-website/index.html');
         });
-      })
-      .catch(() => {
-        return caches.match('/portfolio-website/index.html');
-      })
+    })
   );
 });
