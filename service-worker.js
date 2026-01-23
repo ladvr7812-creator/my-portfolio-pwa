@@ -1,13 +1,13 @@
 const CACHE_NAME = 'vaishnavi-portfolio-v2';
 
 const urlsToCache = [
-  '/portfolio-website/',
-  '/portfolio-website/index.html',
-  '/portfolio-website/style.css',
-  '/portfolio-website/script.js',
-  '/portfolio-website/manifest.json',
-  '/portfolio-website/AppImages/android/android-launchericon-192-192.png',
-  '/portfolio-website/AppImages/android/android-launchericon-512-512.png'
+  '/my-portfolio-pwa/',
+  '/my-portfolio-pwa/index.html',
+  '/my-portfolio-pwa/style.css',
+  '/my-portfolio-pwa/script.js',
+  '/my-portfolio-pwa/manifest.json',
+  '/my-portfolio-pwa/AppImages/android/android-launchericon-192-192.png',
+  '/my-portfolio-pwa/AppImages/android/android-launchericon-512-512.png'
 ];
 
 // INSTALL
