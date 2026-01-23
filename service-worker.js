@@ -71,7 +71,7 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         })
         .catch(() => {
-          return caches.match('/portfolio-website/index.html');
+          return caches.match('/my-portfolio-pwa/index.html');
         });
     })
   );
