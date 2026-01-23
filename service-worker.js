@@ -49,20 +49,22 @@ self.addEventListener('activate', (event) => {
 
 // FETCH
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
+      // Return cache if available
       if (cachedResponse) {
         return cachedResponse;
       }
 
+      // Else try network
       return fetch(event.request)
         .then((networkResponse) => {
+          // If network fails or not valid, just return it
           if (!networkResponse || networkResponse.status !== 200) {
             return networkResponse;
           }
 
+          // Cache valid response
           const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, responseClone);
@@ -71,7 +73,10 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         })
         .catch(() => {
-          return caches.match('/my-portfolio-pwa/index.html');
+          // Offline fallback ONLY for pages
+          if (event.request.mode === 'navigate') {
+            return caches.match('/my-portfolio-pwa/index.html');
+          }
         });
     })
   );
